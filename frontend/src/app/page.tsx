@@ -1,13 +1,18 @@
-'use client'
-import { redirect } from "next/navigation";
-import { useEffect } from "react";
+"use client";
 
-export default function HomePage() {
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function HomeRedirect() {
+	const router = useRouter();
+
 	useEffect(() => {
-		const token = localStorage.getItem('token')
-		if (token)
-			redirect("/home")
-		else
-			redirect("/home");
-	}, [])
+		router.replace("/dashboard");
+	}, [router]);
+
+	return (
+		<p className="text-white text-center mt-10">
+			Redirecting to Employee List...
+		</p>
+	);
 }
