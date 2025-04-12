@@ -6,6 +6,7 @@ import { Users, Handshake, BarChart2, Settings } from "lucide-react";
 
 import "./globals.css"; // include styles if needed
 
+
 const navItems = [
 	{ icon: <Users size={20} />, label: "Employee List", path: "/dashboard" },
 	{ icon: <Handshake size={20} />, label: "Engagement", path: "/Engagement" },
