@@ -25,7 +25,7 @@ export default function EngagementPage() {
           <Select value={selectedScoreType} onValueChange={setSelectedScoreType}>
             <SelectTrigger className="text-xl font-medium text-white text-left outline-0">
               <SelectValue>
-                {selectedScoreType === "top" ? "Top scorers" : "Least scorers"}
+                {selectedScoreType === "top" ? "Top scorers 🔽" : "Least scorers 🔽"}
               </SelectValue>
             </SelectTrigger>
             <SelectContent className="w-[200px] bg-black text-white">
@@ -43,6 +43,26 @@ export default function EngagementPage() {
               picture="/images/profilePic.jpg"
               language="English"
               score={96}
+            />
+            <EmployeeScoreCard
+              name="Daniel simpson"
+              email="hayessophia123@gmail.com"
+              phone="0912345678"
+              position="Manager"
+              status="Active"
+              picture="/images/profilePicTwo.jpg"
+              language="French"
+              score={84}
+            />
+            <EmployeeScoreCard
+              name="Kayle Hayes"
+              email="hayessophia123@gmail.com"
+              phone="0912345678"
+              position="Waiter"
+              status="Active"
+              picture="/images/profilePicThree.jpg"
+              language="Arabic"
+              score={72}
             />
 
               {/* <EmployeeScoreCard/>

@@ -11,7 +11,7 @@ const navItems = [
 	{ icon: <Users size={20} />, label: "Employee List", path: "/dashboard" },
 	{ icon: <Handshake size={20} />, label: "Engagement", path: "/Engagement" },
 	{ icon: <BarChart2 size={20} />, label: "Statics/Report", path: "/Stat" },
-	{ icon: <Settings size={20} />, label: "Settings", path: "/settings" },
+	// { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
 ];
 import ApolloProviderWrapper from '../lib/apolloProvider';
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 				<body className="bg-black text-white">
 					<div className="flex min-h-screen">
 						{/* Sidebar */}
-						<aside className="w-[260px] bg-[black] text-[#4cb657] py-8 px-4 flex flex-col justify-between">
+						<aside className="fixed min-h-screen w-[260px] bg-[black] text-[#4cb657s py-8 px-4 flex flex-col justify-between">
 							<div>
 								{/* Logo */}
 								<div className="flex justify-center mb-10">
@@ -50,34 +50,35 @@ export default function RootLayout({
 												key={item.label}
 												variant="ghost"
 												className={`cursor-pointer relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
-				${
-							isActive
-								? "bg-zinc-800 text-red-500"
-								: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
-						}`}
+				${isActive
+														? "bg-zinc-800 text-[#4cb657]"
+														: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
+													}`}
 												onClick={() => router.push(item.path)}
 											>
 												{isActive && (
-													<span className="absolute left-0 top-0 h-full w-[4px] bg-red-500 rounded-r-sm" />
+													<span className="absolute left-0 top-0 h-full w-[4px] bg-[#4cb657] rounded-r-sm" />
 												)}
-												{item.icon}
-												<span>{item.label.toUpperCase()}</span>
+												<div className="flex w-full items-center gap-8 px-4">
+													<span>{item.icon}</span>
+													<p className="">{item.label.toUpperCase()}</p>
+												</div>
 											</Button>
 										);
 									})}
 								</nav>
 							</div>
 
-							{/* Optional Footer (e.g., user initials) */}
+							{/* Optional Footer (e.g., user initials) 
 							<div className="flex justify-center items-center mt-auto">
 								<div className="bg-zinc-900 text-white rounded-full h-8 w-8 flex items-center justify-center text-sm font-semibold">
 									copyright@2025
 								</div>
-							</div>
+							</div>*/}
 						</aside>
 
 						{/* Dynamic Page Content */}
-						<main className="flex-1 bg-zinc-800 p-6">{children}</main>
+						<main className="flex-1 bg-zinc-800 p-6 ml-[260px]">{children}</main>
 					</div>
 				</body>
 			</html>
