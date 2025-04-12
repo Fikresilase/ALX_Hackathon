@@ -1,6 +1,6 @@
 "use client"
-import { UsersTable } from "@/components/users";
-import { User } from "@/types/user";
+// import { UsersTable } from "@/components/users";
+// import { User } from "@/types/user";
 
 // This would normally come from your API
 
