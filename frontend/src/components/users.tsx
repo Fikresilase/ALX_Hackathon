@@ -26,7 +26,7 @@ interface UsersTableProps {
 
 export function UsersTable({ users }: UsersTableProps) {
   return (
-    <div className="min-h-screen bg-gray-900 p-6 text-gray-100">
+    <div className="min-h-screen bg-primery p-6 text-gray-100">
       <div className="max-w-full mx-auto">
         <h1 className="text-2xl font-bold mb-6 text-blue-400">Employee Management</h1>
         
@@ -77,7 +77,7 @@ export function UsersTable({ users }: UsersTableProps) {
                       <TableCell className="px-4 py-3">
                         <Badge
                           variant={user.status === "Active" ? "default" : "secondary"}
-                          className="px-2 py-1 text-xs bg-blue-600 hover:bg-blue-700 border-blue-500"
+                          className="px-2 py-1 text-xs bg-red-400 hover:bg-red-500 border-red-400"
                         >
                           {user.status}
                         </Badge>
@@ -135,7 +135,7 @@ export function UsersTable({ users }: UsersTableProps) {
             <Button 
               variant="default" 
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-all hover:scale-105"
+              className="bg-red-400 hover:bg-red-500 text-white shadow-lg transition-all hover:scale-105"
             >
               Add Employee
             </Button>
