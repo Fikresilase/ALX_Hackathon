@@ -45,7 +45,7 @@ export default function RootLayout({
 										<Button
 											key={item.label}
 											variant="ghost"
-											className={`relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
+											className={`cursor-pointer relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
               ${
 						isActive
 							? "bg-zinc-800 text-red-500"
