@@ -1,8 +1,14 @@
 import { ApolloProvider } from '@apollo/client';
 import client from './apolloClient';
-const ApolloProviderWrapper = ({ children }) => {
+import React from 'react';
+
+interface ApolloProviderWrapperProps {
+  children: React.ReactNode;
+}
+
+const ApolloProviderWrapper: React.FC<ApolloProviderWrapperProps> = ({ children }) => {
   return (
-    <ApolloProvider client={client} >
+    <ApolloProvider client={client}>
       {children}
     </ApolloProvider>
   );
