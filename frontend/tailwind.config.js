@@ -46,11 +46,14 @@ module.exports = {
             '800': '#74551f',
             '900': '#634720',
             '950': '#39250f',
+			
         }
         },
         fontFamily: {
           sans: ['Inter', 'sans-serif'], // Example font
         },
+	
+
       },
     },
     darkMode: 'class', // or 'media' if you prefer auto detection

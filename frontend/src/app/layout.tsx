@@ -23,10 +23,10 @@ export default function RootLayout({
 
 	return (
 		<html lang="en">
-			<body className="bg-zinc-900 text-white bg-primary-900">
+			<body className="bg-black text-white">
 				<div className="flex min-h-screen">
 					{/* Sidebar */}
-					<aside className="w-[260px] bg-primary-800 text-white py-8 px-4 flex flex-col justify-between">
+					<aside className="w-[260px] bg-[black] text-[#4cb657] py-8 px-4 flex flex-col justify-between">
 						<div>
 							{/* Logo */}
 							<div className="flex justify-center mb-10">
@@ -48,13 +48,13 @@ export default function RootLayout({
 											className={`cursor-pointer relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
               ${
 						isActive
-							? "bg-zinc-800 text-red-500"
-							: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
+							? "bg-[#143618] text-#143618"
+							: "text-#39250f hover:bg-[#143618] hover:text-[#e7e17b]"
 					}`}
 											onClick={() => router.push(item.path)}
 										>
 											{isActive && (
-												<span className="absolute left-0 top-0 h-full w-[4px] bg-red-500 rounded-r-sm" />
+												<span className="absolute left-0 top-0 h-full w-[4px] bg-[#ea5fa3] rounded-r-sm" />
 											)}
 											{item.icon}
 											<span>{item.label.toUpperCase()}</span>
@@ -73,7 +73,7 @@ export default function RootLayout({
 					</aside>
 
 					{/* Dynamic Page Content */}
-					<main className="flex-1 bg-zinc-800 p-6">{children}</main>
+					<main className="flex-1 bg-[#39250f] p-6">{children}</main>
 				</div>
 			</body>
 		</html>
