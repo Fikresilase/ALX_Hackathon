@@ -26,7 +26,7 @@ interface UsersTableProps {
 
 export function UsersTable({ users }: UsersTableProps) {
   return (
-    <div className="min-h-screen bg-primery p-6 text-gray-100">
+    <div className="min-h-screen bg-primary-500 p-6 text-gray-100">
       <div className="max-w-full mx-auto">
         <h1 className="text-2xl font-bold mb-6 text-blue-400">Employee Management</h1>
         
@@ -135,7 +135,7 @@ export function UsersTable({ users }: UsersTableProps) {
             <Button 
               variant="default" 
               size="lg"
-              className="bg-red-400 hover:bg-red-500 text-white shadow-lg transition-all hover:scale-105"
+              className="bg-another-400 hover:bg-primary-900 text-white shadow-lg transition-all hover:scale-105"
             >
               Add Employee
             </Button>
