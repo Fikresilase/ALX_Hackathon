@@ -2,16 +2,18 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Home, Folder, ListChecks, Settings } from "lucide-react";
+import { Users, Handshake, BarChart2, Settings } from "lucide-react";
+
 import "./globals.css"; // include styles if needed
 
 
 const navItems = [
-	{ icon: <Home size={18} />, label: "Employee List", path: "/dashboard" },
-	{ icon: <Folder size={18} />, label: "Engagement", path: "/Engagement" },
-	{ icon: <ListChecks size={18} />, label: "Statics/Report", path: "/Stat" },
-	{ icon: <Settings size={18} />, label: "Settings", path: "/settings" },
+	{ icon: <Users size={20} />, label: "Employee List", path: "/dashboard" },
+	{ icon: <Handshake size={20} />, label: "Engagement", path: "/Engagement" },
+	{ icon: <BarChart2 size={20} />, label: "Statics/Report", path: "/Stat" },
+	{ icon: <Settings size={20} />, label: "Settings", path: "/settings" },
 ];
+import ApolloProviderWrapper from '../lib/apolloProvider';
 
 export default function RootLayout({
 	children,
@@ -22,37 +24,59 @@ export default function RootLayout({
 	const pathname = usePathname();
 
 	return (
-		<html lang="en">
-			<body className="bg-primary-900 text-white">
-				<div className="flex min-h-screen">
-					{/* Sidebar */}
-					<aside className="w-[240px] bg-zinc-950 p-4 flex flex-col gap-8">
-						<div className="text-2xl font-bold tracking-wide px-2">
-							📘
-						</div>
-						<nav className="flex flex-col gap-2">
-							{navItems.map((item) => (
-								<Button
-									key={item.label}
-									variant="ghost"
-									className={`justify-start gap-2 ${
-										pathname === item.path
-											? "bg-zinc-700 text-white"
-											: "hover:bg-zinc-800 text-zinc-400"
-									}`}
-									onClick={() => router.push(item.path)}
-								>
-									{item.icon}
-									{item.label}
-								</Button>
-							))}
-						</nav>
-					</aside>
+		<ApolloProviderWrapper>
+			<html lang="en">
+				<body className="bg-zinc-900 text-white bg-primary-800">
+					<div className="flex min-h-screen">
+						{/* Sidebar */}
+						<aside className="w-[260px] bg-primary-800 text-white py-8 px-4 flex flex-col justify-between">
+							<div>
+								{/* Logo */}
+								<div className="flex justify-center mb-10">
+									<img
+										src="/kuriftu.png"
+										alt="Logo"
+										className="h-12 w-auto object-contain"
+									/>
+								</div>
 
-					{/* Dynamic Page Content */}
-					<main className="flex-1 bg-zinc-800 p-6">{children}</main>
-				</div>
-			</body>
-		</html>
+								{/* Navigation */}
+								<nav className="flex flex-col gap-4">
+									{navItems.map((item) => {
+										const isActive = pathname === item.path;
+										return (
+											<Button
+												key={item.label}
+												variant="ghost"
+												className={`cursor-pointer relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
+              ${isActive
+														? "bg-zinc-800 text-red-500"
+														: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
+													}`}
+												onClick={() => router.push(item.path)}
+											>
+												{isActive && (
+													<span className="absolute left-0 top-0 h-full w-[4px] bg-red-500 rounded-r-sm" />
+												)}
+												{item.icon}
+												<span>{item.label.toUpperCase()}</span>
+											</Button>
+										);
+									})}
+								</nav>
+							</div>
+
+							{/* Optional Footer (e.g., user initials) */}
+							<div className="flex justify-center items-center mt-auto">
+								<div className="bg-zinc-900 text-white rounded-full h-8 w-8 flex items-center justify-center text-sm font-semibold">
+									copyright@2025
+								</div>
+							</div>
+						</aside>
+						<main className="flex-1 bg-zinc-800 p-6">{children}</main>
+					</div>
+				</body>
+			</html >
+		</ApolloProviderWrapper>
 	);
 }

@@ -26,25 +26,25 @@ interface UsersTableProps {
 
 export function UsersTable({ users }: UsersTableProps) {
   return (
-    <div className="min-h-screen bg-primary-500 p-6 text-gray-100">
+    <div className="min-h-screen bg-[#39250f] p-6 text-[#214626]">
       <div className="max-w-full mx-auto">
-        <h1 className="text-2xl font-bold mb-6 text-blue-400">Employee Management</h1>
+        <h1 className="text-2xl font-bold mb-6 text-[#4cb657]"></h1>
         
         <div className="space-y-6">
-          <div className="rounded-lg border border-gray-700 overflow-hidden bg-gray-800 shadow-xl">
+          <div className="rounded-lg border border-[#c7ebca] overflow-hidden bg-white shadow-lg">
             <Table className="w-full">
-              <TableHeader className="bg-gray-750">
-                <TableRow className="hover:bg-gray-750">
-                  <TableHead className="w-[80px] px-4 py-3 text-blue-300">ID</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Profile</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Name</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Email</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Phone</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Position</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Status</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Training</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Speaking</TableHead>
-                  <TableHead className="px-4 py-3 text-blue-300">Actions</TableHead>
+              <TableHeader className="bg-[#e2f6e4]">
+                <TableRow className="hover:bg-[#e2f6e4]">
+                  <TableHead className="w-[80px] px-4 py-3 text-[#32873b]">ID</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Profile</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Name</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Email</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Phone</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Position</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Status</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Training</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Speaking</TableHead>
+                  <TableHead className="px-4 py-3 text-[#32873b]">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -52,15 +52,15 @@ export function UsersTable({ users }: UsersTableProps) {
                   users.map((user) => (
                     <TableRow
                       key={user.id}
-                      className="border-gray-700 hover:bg-gray-750/50 transition-colors"
+                      className="border-[#c7ebca] hover:bg-[#f3faf3] transition-colors"
                     >
-                      <TableCell className="font-medium px-4 py-3">
+                      <TableCell className="font-medium px-4 py-3 text-[#26552c]">
                         {user.id}
                       </TableCell>
                       <TableCell className="px-4 py-3">
-                        <Avatar className="h-9 w-9 border border-blue-800/50">
+                        <Avatar className="h-9 w-9 border border-[#9bdaa1]">
                           <AvatarImage src={user.profilePicture} alt={user.name} />
-                          <AvatarFallback className="bg-blue-900/30 text-blue-300">
+                          <AvatarFallback className="bg-[#e2f6e4] text-[#4cb657]">
                             {user.name
                               .split(" ")
                               .map((n) => n[0])
@@ -68,24 +68,23 @@ export function UsersTable({ users }: UsersTableProps) {
                           </AvatarFallback>
                         </Avatar>
                       </TableCell>
-                      <TableCell className="px-4 py-3 font-medium">{user.name}</TableCell>
-                      <TableCell className="px-4 py-3 text-gray-300">{user.email}</TableCell>
-                      <TableCell className="px-4 py-3 text-gray-300">
+                      <TableCell className="px-4 py-3 font-medium text-[#214626]">{user.name}</TableCell>
+                      <TableCell className="px-4 py-3 text-[#2b6a31]">{user.email}</TableCell>
+                      <TableCell className="px-4 py-3 text-[#2b6a31]">
                         {user.phoneNumber}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-300">{user.position}</TableCell>
+                      <TableCell className="px-4 py-3 text-[#2b6a31]">{user.position}</TableCell>
                       <TableCell className="px-4 py-3">
                         <Badge
-                          variant={user.status === "Active" ? "default" : "secondary"}
-                          className="px-2 py-1 text-xs bg-red-400 hover:bg-red-500 border-red-400"
+                          className="px-2 py-1 text-xs bg-[#4cb657] hover:bg-[#2b6a31] text-white border-[#4cb657]"
                         >
                           {user.status}
                         </Badge>
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-300">
+                      <TableCell className="px-4 py-3 text-[#2b6a31]">
                         {user.languageTraining}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-300">
+                      <TableCell className="px-4 py-3 text-[#2b6a31]">
                         {user.languageSpeaking}
                       </TableCell>
                       <TableCell className="px-4 py-3">
@@ -93,23 +92,23 @@ export function UsersTable({ users }: UsersTableProps) {
                           <DropdownMenuTrigger asChild>
                             <Button 
                               variant="ghost" 
-                              className="h-8 w-8 p-0 hover:bg-blue-900/20"
+                              className="h-8 w-8 p-0 hover:bg-[#e2f6e4]"
                             >
                               <span className="sr-only">Open menu</span>
-                              <MoreVertical className="h-4 w-4 text-blue-300" />
+                              <MoreVertical className="h-4 w-4 text-[#4cb657]" />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent 
                             align="end" 
-                            className="bg-gray-750 border-gray-700 shadow-lg"
+                            className="bg-white border-[#c7ebca] shadow-lg"
                           >
-                            <DropdownMenuItem className="text-blue-200 hover:bg-blue-900/30 focus:bg-blue-900/30">
+                            <DropdownMenuItem className="text-[#214626] hover:bg-[#e2f6e4] focus:bg-[#e2f6e4]">
                               Edit
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-blue-200 hover:bg-blue-900/30 focus:bg-blue-900/30">
+                            <DropdownMenuItem className="text-[#214626] hover:bg-[#e2f6e4] focus:bg-[#e2f6e4]">
                               Update
                             </DropdownMenuItem>
-                            <DropdownMenuItem className="text-red-400 hover:bg-red-900/30 focus:bg-red-900/30">
+                            <DropdownMenuItem className="text-[#d62c77] hover:bg-[#fbe8f3] focus:bg-[#fbe8f3]">
                               Delete
                             </DropdownMenuItem>
                           </DropdownMenuContent>
@@ -121,7 +120,7 @@ export function UsersTable({ users }: UsersTableProps) {
                   <TableRow>
                     <TableCell
                       colSpan={10}
-                      className="h-24 text-center text-gray-400"
+                      className="h-24 text-center text-[#9bdaa1]"
                     >
                       No employees found
                     </TableCell>
@@ -133,9 +132,8 @@ export function UsersTable({ users }: UsersTableProps) {
 
           <div className="flex justify-end">
             <Button 
-              variant="default" 
               size="lg"
-              className="bg-another-400 hover:bg-primary-900 text-white shadow-lg transition-all hover:scale-105"
+              className="bg-[#4cb657] hover:bg-[#2b6a31] text-white shadow-lg transition-all hover:scale-105"
             >
               Add Employee
             </Button>
