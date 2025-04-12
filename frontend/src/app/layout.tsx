@@ -6,6 +6,7 @@ import { Users, Handshake, BarChart2, Settings } from "lucide-react";
 
 import "./globals.css"; // include styles if needed
 
+
 const navItems = [
 	{ icon: <Users size={20} />, label: "Employee List", path: "/dashboard" },
 	{ icon: <Handshake size={20} />, label: "Engagement", path: "/Engagement" },
@@ -24,11 +25,12 @@ export default function RootLayout({
 
 	return (
 		<ApolloProviderWrapper>
+
 			<html lang="en">
-				<body className="bg-zinc-900 text-white bg-primary-800">
+				<body className="bg-black text-white">
 					<div className="flex min-h-screen">
 						{/* Sidebar */}
-						<aside className="w-[260px] bg-primary-800 text-white py-8 px-4 flex flex-col justify-between">
+						<aside className="fixed min-h-screen w-[260px] bg-[black] text-[#4cb657s py-8 px-4 flex flex-col justify-between">
 							<div>
 								{/* Logo */}
 								<div className="flex justify-center mb-10">
@@ -48,17 +50,20 @@ export default function RootLayout({
 												key={item.label}
 												variant="ghost"
 												className={`cursor-pointer relative flex items-center text-[15px] font-medium gap-3 h-[48px] px-4 rounded-md transition-all
-              ${isActive
-														? "bg-zinc-800 text-red-500"
-														: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
-													}`}
+				${
+							isActive
+								? "bg-zinc-800 text-[#4cb657]"
+								: "text-zinc-300 hover:bg-zinc-700 hover:text-white"
+						}`}
 												onClick={() => router.push(item.path)}
 											>
 												{isActive && (
-													<span className="absolute left-0 top-0 h-full w-[4px] bg-red-500 rounded-r-sm" />
+													<span className="absolute left-0 top-0 h-full w-[4px] bg-[#4cb657] rounded-r-sm" />
 												)}
-												{item.icon}
-												<span>{item.label.toUpperCase()}</span>
+												<div className="flex w-full items-center gap-8 px-4">
+													<span>{item.icon}</span>
+													<p className="">{item.label.toUpperCase()}</p>
+												</div>
 											</Button>
 										);
 									})}
@@ -72,10 +77,12 @@ export default function RootLayout({
 								</div>
 							</div>
 						</aside>
-						<main className="flex-1 bg-zinc-800 p-6">{children}</main>
+
+						{/* Dynamic Page Content */}
+						<main className="flex-1 bg-zinc-800 p-6 ml-[260px]">{children}</main>
 					</div>
 				</body>
-			</html >
+			</html>
 		</ApolloProviderWrapper>
 	);
 }
