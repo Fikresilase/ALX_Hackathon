@@ -25,7 +25,7 @@ export default function EngagementPage() {
           <Select value={selectedScoreType} onValueChange={setSelectedScoreType}>
             <SelectTrigger className="text-xl font-medium text-white text-left outline-0">
               <SelectValue>
-                {selectedScoreType === "top" ? "Top scorers" : "Least scorers"}
+                {selectedScoreType === "top" ? "Top scorers 🔽" : "Least scorers 🔽"}
               </SelectValue>
             </SelectTrigger>
             <SelectContent className="w-[200px] bg-black text-white">
