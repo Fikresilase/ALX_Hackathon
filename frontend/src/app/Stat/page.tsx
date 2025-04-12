@@ -84,7 +84,7 @@ export default function AnalyticsDashboard() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#0D0C0F] text-white p-6 font-sans">
+		<div className="bg-[#0D0C0F] text-white p-6 font-sans">
 			{/* Main Layout */}
 			<main className="ml-24">
 				{/* Top Section */}
@@ -107,7 +107,7 @@ export default function AnalyticsDashboard() {
 						{/* Overall Training Condition */}
 						<Card className="bg-gradient-to-br from-[#27252C] to-[#1F1F24] border-none text-white">
 							<CardHeader>
-								<CardTitle className="text-lg text-purple-300">
+								<CardTitle className="text-lg text-[#4cb657]">
 									Overall Training Condition
 								</CardTitle>
 							</CardHeader>
@@ -124,7 +124,7 @@ export default function AnalyticsDashboard() {
 						{/* Score per Language */}
 						<Card className="bg-gradient-to-br from-[#27252C] to-[#1F1F24] border-none text-white">
 							<CardHeader>
-								<CardTitle className="text-lg text-purple-300">
+								<CardTitle className="text-lg text-[#4cb657]">
 									Score per Language
 								</CardTitle>
 							</CardHeader>
@@ -143,7 +143,7 @@ export default function AnalyticsDashboard() {
 						{/* Average Time Spent */}
 						<Card className="bg-gradient-to-br from-[#27252C] to-[#1F1F24] border-none text-white">
 							<CardHeader>
-								<CardTitle className="text-lg text-purple-300">
+								<CardTitle className="text-lg text-[#4cb657]">
 									Avg. Time on Training
 								</CardTitle>
 							</CardHeader>

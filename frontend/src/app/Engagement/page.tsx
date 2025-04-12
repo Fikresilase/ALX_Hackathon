@@ -44,6 +44,26 @@ export default function EngagementPage() {
               language="English"
               score={96}
             />
+            <EmployeeScoreCard
+              name="Daniel simpson"
+              email="hayessophia123@gmail.com"
+              phone="0912345678"
+              position="Manager"
+              status="Active"
+              picture="/images/profilePicTwo.jpg"
+              language="French"
+              score={84}
+            />
+            <EmployeeScoreCard
+              name="Kayle Hayes"
+              email="hayessophia123@gmail.com"
+              phone="0912345678"
+              position="Waiter"
+              status="Active"
+              picture="/images/profilePicThree.jpg"
+              language="Arabic"
+              score={72}
+            />
 
               {/* <EmployeeScoreCard/>
               <EmployeeScoreCard/> */}

@@ -24,15 +24,15 @@ export default function EmployeeScoreCard({
   return (
     <div className="flex flex-col gap-4 p-4 w-1/3 rounded-lg bg-zinc-900">
       <div className="flex gap-4 items-center">
-        <img src={picture} className="rounded-full size-24" alt={`${name} profile`} />
+        <img src={picture} className="object-cover rounded-full size-24" alt={`${name} profile`} />
         <div className="flex flex-col gap-2">
-          <p className="text-lg text-white font-medium">{name}</p>
+          <p className="text-lg text-white font-black">{name}</p>
           <div className="flex items-center gap-2">
-            <Mail className="size-4" />
+            <Mail className="size-4 text-[#4cb657]" />
             <p className="text-sm text-white">{email}</p>
           </div>
           <div className="flex items-center gap-2">
-            <Phone className="size-4" />
+            <Phone className="size-4 text-[#4cb657]" />
             <p className="text-sm text-white">{phone}</p>
           </div>
         </div>
@@ -40,15 +40,15 @@ export default function EmployeeScoreCard({
 
       <div className="flex text-sm items-center gap-4">
         <span className={`size-3 rounded-full ${status === "Active" ? "bg-green-500" : "bg-red-500"}`}></span>
-        <p>{status}</p>
+        <p className="text-white">{status}</p>
         <p>|</p>
-        <BriefcaseBusiness className="size-4" />
-        <p>{position}</p>
+        <BriefcaseBusiness className="size-4 text-[#4cb657]" />
+        <p className="text-white">{position}</p>
       </div>
 
       <div className="flex items-center w-full gap-18 justify-center">
         <div className="flex flex-col gap-4 items-center">
-          <Languages className="size-12" />
+          <Languages className="size-12 text-[#4cb657]" />
           <p className="font-black text-xl">{language}</p>
         </div>
         <div className="flex flex-col justify-center items-center size-36 rounded-full bg-zinc-800">

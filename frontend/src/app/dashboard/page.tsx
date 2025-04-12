@@ -19,7 +19,7 @@ const mockUsers: User[] = [
 
 export default function DashboardPage() {  // Changed from 'home' to 'DashboardPage'
   return (
-    <div className="container mx-auto py-10">
+    <div className="container">
       <h1 className="text-2xl font-bold mb-6">Employees</h1>
       <UsersTable users={mockUsers} />
     </div>
