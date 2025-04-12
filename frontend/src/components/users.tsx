@@ -19,17 +19,63 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
 import { User } from "@/types/user";
+import emailjs from "emailjs-com";
 
 interface UsersTableProps {
   users: User[];
 }
 
+import UseModal from "@/hooks/useModal";
+import AddEmployeeForm from "./AddEmployeeForm";
+import { useState } from "react";
 export function UsersTable({ users }: UsersTableProps) {
+  const {
+    isOpen: isCreateModalOpen,
+    openModal: openCreateModal,
+    closeModal: closeCreateModal,
+  } = UseModal();
+  const [customUsers, setCustomUsers] = useState<Partial<User>[]>(users)
+  const saveEmployee = (email: string) => {
+    const newUser: Partial<User> = { email };
+    console.log(newUser);
+    setCustomUsers((prev) => {
+      return Array.isArray(prev) ? [...prev, newUser] : [newUser];
+    });
+  };
+  const sendEmail = () => {
+    const link = "https://kuriftu-lang.vercel.app/"
+    const language = "English"
+    for (const email of customUsers.map(user => user.email)) {
+      // Prepare the template parameters
+      const templateParams = {
+        email: email,
+        language: language,
+        link: link,
+      };
+      // Send the email using EmailJS
+      emailjs
+        .send(
+          "service_zqxis5b", // Your service ID (from EmailJS dashboard)
+          "template_dp6tu5a", // Your template ID (from EmailJS dashboard)
+          templateParams,
+          "QFxoFEtxyoW8GoU7o" // Your user ID (from EmailJS dashboard)
+        )
+        .then(
+          (response) => {
+            console.log("Email sent successfully", response);
+          },
+          (error) => {
+            console.error("Error sending email:", error);
+          }
+        );
+      console.log(email)
+    }
+  }
   return (
     <div className="min-h-screen bg-[#39250f] p-6 text-[#214626]">
       <div className="max-w-full mx-auto">
         <h1 className="text-2xl font-bold mb-6 text-[#4cb657]"></h1>
-        
+
         <div className="space-y-6">
           <div className="rounded-lg border border-[#c7ebca] overflow-hidden bg-white shadow-lg">
             <Table className="w-full">
@@ -48,10 +94,10 @@ export function UsersTable({ users }: UsersTableProps) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {users.length > 0 ? (
-                  users.map((user) => (
+                {customUsers.length > 0 ? (
+                  customUsers.map((user, index) => (  // Use customUsers here
                     <TableRow
-                      key={user.id}
+                      key={index}
                       className="border-[#c7ebca] hover:bg-[#f3faf3] transition-colors"
                     >
                       <TableCell className="font-medium px-4 py-3 text-[#26552c]">
@@ -61,10 +107,10 @@ export function UsersTable({ users }: UsersTableProps) {
                         <Avatar className="h-9 w-9 border border-[#9bdaa1]">
                           <AvatarImage src={user.profilePicture} alt={user.name} />
                           <AvatarFallback className="bg-[#e2f6e4] text-[#4cb657]">
-                            {user.name
+                            {user.name ? user.name
                               .split(" ")
                               .map((n) => n[0])
-                              .join("")}
+                              .join("") : null}
                           </AvatarFallback>
                         </Avatar>
                       </TableCell>
@@ -90,16 +136,16 @@ export function UsersTable({ users }: UsersTableProps) {
                       <TableCell className="px-4 py-3">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Button 
-                              variant="ghost" 
+                            <Button
+                              variant="ghost"
                               className="h-8 w-8 p-0 hover:bg-[#e2f6e4]"
                             >
                               <span className="sr-only">Open menu</span>
                               <MoreVertical className="h-4 w-4 text-[#4cb657]" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent 
-                            align="end" 
+                          <DropdownMenuContent
+                            align="end"
                             className="bg-white border-[#c7ebca] shadow-lg"
                           >
                             <DropdownMenuItem className="text-[#214626] hover:bg-[#e2f6e4] focus:bg-[#e2f6e4]">
@@ -130,15 +176,24 @@ export function UsersTable({ users }: UsersTableProps) {
             </Table>
           </div>
 
-          <div className="flex justify-end">
-            <Button 
+          <div className="flex justify-end gap-5">
+            <Button
               size="lg"
               className="bg-[#4cb657] hover:bg-[#2b6a31] text-white shadow-lg transition-all hover:scale-105"
+              onClick={openCreateModal}
             >
               Add Employee
             </Button>
+            <Button
+              size="lg"
+              className="bg-[#0aa] hover:bg-[#2b6a31] text-white shadow-lg transition-all hover:scale-105"
+              onClick={sendEmail}
+            >
+              Train employees
+            </Button>
           </div>
         </div>
+        {isCreateModalOpen ? (<AddEmployeeForm onCancel={closeCreateModal} onSave={saveEmployee} />) : null}
       </div>
     </div>
   );
